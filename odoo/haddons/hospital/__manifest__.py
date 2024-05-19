@@ -11,6 +11,7 @@
         'security/ir.model.access.csv',
         'views/patient.xml',
         'views/female_patient.xml',
+        'views/appointment.xml',
         'views/menu.xml',
 
     ],

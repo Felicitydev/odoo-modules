@@ -21,12 +21,26 @@
             parent="menu_patient_master"
             sequence="0"/>
 
+
         <menuitem
             id="menu_female_patient"
             name="Patients Féminins"
             action="action_hospital_female_patient"
             parent="menu_patient_master"
             sequence="20"/>
+    
+        <menuitem
+            id="menu_master_appointment"
+            name="Rdv"
+            parent="menu_hospital_root"
+            sequence="20"/>
+
+        <menuitem
+            id="menu_appointment"
+            name="Rdv"
+            action="action_hospital_appointment"
+            parent="menu_master_appointment"
+            sequence="10"/>
 
     </data> 
 </odoo>
