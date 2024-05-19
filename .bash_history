@@ -73,3 +73,27 @@ cd haddons/
 ls
 cd ..
 exit
+sudo service postgresql start 
+sudo service postgresql status 
+./odoo-bin --addons-path="addons"
+cd /
+cd opt/odoo15/odoo/
+ls
+./odoo-bin --addons-path="addons"
+sudo service postgresql restart 
+./odoo-bin --addons-path="addons"
+./odoo-bin --addons-path="addons,haddons"
+cd /
+cd opt/odoo15/
+pwd
+./odoo-bin --addons-path="addons,haddons"
+cd odoo/
+./odoo-bin --addons-path="addons,haddons"
+./odoo-bin --addons-path="addons,haddons" -u hospital
+sudo service postgresql restart 
+./odoo-bin --addons-path="addons,haddons"
+./odoo-bin --addons-path="addons,haddons" -u hospital
+sudo service postgresql restart 
+./odoo-bin --addons-path="addons,haddons" -u hospital
+sudo service postgresql status 
+./odoo-bin --addons-path="addons,haddons" -u hospital
