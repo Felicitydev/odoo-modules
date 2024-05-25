@@ -18,18 +18,20 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string = "Prescription" name="prescription"></page>
+                            <page string = "Prescription" name="prescription">
+                                <field name="prescription" placeholder = "Entrez votre prescription"/>
+                            </page>
                             <page string = "Pharmacie" name="pharmacy"></page>
                         </notebook>
                     </sheet>
-
-                </form>
                 <!-- Chatter -->
                 <div class="oe_chatter">
                     <field name="message_follower_ids" groups="base.group_user"/>
                     <field name="activity_ids"/>
                     <field name="message_ids"/>
                 </div>
+                </form>
+
             </field>
         </record>
 

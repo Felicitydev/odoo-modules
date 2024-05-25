@@ -13,6 +13,7 @@ class HospitalAppointment(models.Model):
     appointment_time = fields.Datetime(string="Heure du rdv", default=fields.Datetime.now)
     booking_date = fields.Date(string="Heure de réservation", default=fields.Date.context_today)
     ref = fields.Char(string="Code", tracking=True)
+    prescription = fields.Html(string="Prescription")
 
     @api.onchange('patient_id')
     def onchange_patient_id(self):
