@@ -23,6 +23,8 @@
                                 <field name="gender"/>
                                 <field name="appointment_time"/>
                                 <field name="booking_date"/>
+                                <button name="action_test" string="Test buton" type="object" class="oe_highlight"/>
+                                <button name="%(hospital.action_hospital_patient)d" string="Test patient" type="action" class="oe_highlight"/>
                             </group>
                         </group>
                         <notebook>
