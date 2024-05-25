@@ -14,6 +14,12 @@ class HospitalAppointment(models.Model):
     booking_date = fields.Date(string="Heure de réservation", default=fields.Date.context_today)
     ref = fields.Char(string="Code", tracking=True)
     prescription = fields.Html(string="Prescription")
+    priority = fields.Selection([
+        ('0', 'Normal'),
+        ('1', 'Low'),
+        ('2', 'High'),
+        ('3', 'Very High')], string="Priorité")
+
 
     @api.onchange('patient_id')
     def onchange_patient_id(self):
