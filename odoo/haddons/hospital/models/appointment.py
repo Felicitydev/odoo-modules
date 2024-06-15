@@ -31,4 +31,10 @@ class HospitalAppointment(models.Model):
         self.ref = self.patient_id.ref
 
     def action_test(self):
-        print("....................................................................................................")
+        return {
+                'effect': {
+                    'fadeout': 'slow', # L'image reste ficgée jusqu'à l'user effectue une action
+                    'message': 'Click successfull',
+                    'type': 'rainbow_man',
+                }
+            }
