@@ -54,7 +54,8 @@
                     <field name="patient_id"/>
                     <field name="gender"/>
                     <field name="appointment_time"/>
-                    <field name="booking_date"/>
+                    <field name="ref" optional="hide"/>
+                    <field name="booking_date" optional="show"/>
                     <field name="activity_ids" widget="list_activity"/>
                     <field name="state"
                            decoration-success="state =='done'" 
