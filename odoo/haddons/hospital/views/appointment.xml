@@ -30,7 +30,7 @@
                         </group>
                         <notebook>
                             <page string = "Prescription" name="prescription">
-                                <field name="prescription" placeholder = "Entrez votre prescription"/>
+                                <field name="prescription" placeholder = "Entrez votre prescription" options="{'collaborative' : true}"/>
                             </page>
                             <page string = "Pharmacie" name="pharmacy"></page>
                         </notebook>
