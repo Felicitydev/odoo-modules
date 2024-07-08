@@ -24,6 +24,7 @@ class HospitalAppointment(models.Model):
         ('in_consultation', 'Consultation'),
         ('done', 'Fait'),
         ('cancel', 'Fermé')], default='draft', string="Statut", required=True)
+    doctor_id = fields.Many2one('res.users', string = "Docteur")
 
 
     @api.onchange('patient_id')
