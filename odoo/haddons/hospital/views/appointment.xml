@@ -8,7 +8,11 @@
             <field name="arch" type="xml">
                 <form> <!-- <form>create ="0" delete ="0" copy="0" edit="0" -->
                     <header>
-                        <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}" statusbar_visible="draft,in_consultation,done"/>
+                        <button name="action_in_consultation" string="En Consultation" class="oe_highlight" type="object" states="draft"/>
+                        <button name="action_done" string="Marqué comme Fait" class="oe_highlight" type="object" states="in_consultation"/>
+                        <button name="action_cancel" string="Annulé" type="object" states="draft,in_consultation"/>
+                        <button name="action_draft" string="Remettre à l'état brouillon" type="object" states="cancel"/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,in_consultation,done,cancel"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
