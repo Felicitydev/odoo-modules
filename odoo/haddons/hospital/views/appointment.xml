@@ -21,6 +21,7 @@
                                 <field name="patient_id"/>
                                 <field name="ref"/>
                                 <field name="gender"/>
+                                <field name="active" invisible="1"/>
                                 <field name="doctor_id" widget="many2one_avatar_user"/>
                                 <field name="appointment_time"/>
                                 <field name="booking_date" help="dete de réservation" default_focus="1"/> <!--default_focus="1" using when opening the form it's the field by default  -->
@@ -50,7 +51,7 @@
             <field name="name">hospital.appointment.tree</field>
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
-                <tree decoration-success="state =='done'" decoration-danger="state == 'cancel'" decoration-muted="state == 'in_consultation'">
+                <tree decoration-success="state =='done'" decoration-danger="state == 'cancel'" decoration-muted="state == 'in_consultation'" sample="1">
                 <!-- <tree create ="0" delete ="0" copy="0" edit="0">  -->
                     <field name="patient_id"/>
                     <field name="gender"/>

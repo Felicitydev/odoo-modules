@@ -14,6 +14,7 @@ class HospitalAppointment(models.Model):
     booking_date = fields.Date(string="Heure de réservation", default=fields.Date.context_today)
     ref = fields.Char(string="Code", help="Identifiant unique de chaque patient", tracking=True)
     prescription = fields.Html(string="Prescription")
+    active = fields.Boolean(string= "Active", default=True)
     priority = fields.Selection([
         ('0', 'Normal'),
         ('1', 'Low'),
