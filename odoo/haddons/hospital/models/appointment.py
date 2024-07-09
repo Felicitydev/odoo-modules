@@ -26,6 +26,7 @@ class HospitalAppointment(models.Model):
         ('done', 'Fait'),
         ('cancel', 'Annulé')], default='draft', string="Statut", required=True)
     doctor_id = fields.Many2one('res.users', string = "Docteur", tracking=True)
+    pharmacy_line_ids = fields.One2many('appointment.pharmacy.lines', 'appointment_id', string="Lignes de pharmacy")
 
 
     @api.onchange('patient_id')

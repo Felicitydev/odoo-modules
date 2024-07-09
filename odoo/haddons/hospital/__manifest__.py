@@ -6,7 +6,7 @@
     'sequence': -100,
     'description': """Hospital Management System""",
     'category': 'Hospital',
-    'depends' : ['mail'],
+    'depends' : ['mail','product'],
     'data': [
         'security/ir.model.access.csv',
         'views/patient.xml',
