@@ -12,6 +12,7 @@
         'views/patient.xml',
         'views/female_patient.xml',
         'views/appointment.xml',
+        'views/patient_tag.xml',
         'views/menu.xml',
 
     ],

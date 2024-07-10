@@ -42,5 +42,18 @@
             parent="menu_master_appointment"
             sequence="10"/>
 
+        <menuitem
+            id="menu_configuration"
+            name="Configuration"
+            parent="menu_hospital_root"
+            sequence="100"/>
+
+        <menuitem
+            id="menu_patient_tag"
+            name="Tags"
+            action="action_patient_tag"
+            parent="menu_configuration"
+            sequence="10"/>
+
     </data> 
 </odoo>
