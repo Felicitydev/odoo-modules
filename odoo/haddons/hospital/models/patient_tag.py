@@ -7,4 +7,4 @@ class HospitalPatient(models.Model):
     
     name = fields.Char(string="Name", required=True)
     active = fields.Boolean(string="Actif", default=True)
-    
+    color = fields.Integer(string="Couleur")
