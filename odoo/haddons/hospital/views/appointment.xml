@@ -27,7 +27,8 @@
                     <header>
                         <button name="action_in_consultation" string="En Consultation" class="oe_highlight" type="object" states="draft"/>
                         <button name="action_done" string="Marqué comme Fait" class="oe_highlight" type="object" states="in_consultation" data-hotkey="v"/>
-                        <button name="action_cancel" string="Annulé" type="object" states="draft,in_consultation" data-hotkey="z"/>
+                        <!-- <button name="%(hospital.action_cancel_appointment)d" string="Annuler" type="action" states="draft,in_consultation" data-hotkey="z"/> Syntaxe à utiliser pour appeler un bouton définir dans une autre vue -->
+                        <button name="action_cancel" string="Annuler" type="object" states="draft,in_consultation" data-hotkey="z"/>
                         <button name="action_draft" string="Remettre à l'état brouillon" type="object" states="cancel" data-hotkey="d"/>
                         <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,in_consultation,done,cancel"/>
                     </header>
