@@ -6,6 +6,7 @@ class CancelAppointmentWizard(models.TransientModel):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     appointment_id = fields.Many2one('hospital.appointment', string="Rendez-vous")
+    reason = fields.Text(string="Raison de l'annulation")
     
     def action_cancel(self):
         return 
