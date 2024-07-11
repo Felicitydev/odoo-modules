@@ -37,7 +37,7 @@
 
         <menuitem
             id="menu_appointment"
-            name="Rdv"
+            name="Rendez-vous"
             action="action_hospital_appointment"
             parent="menu_master_appointment"
             sequence="10"/>
@@ -54,6 +54,13 @@
             action="action_patient_tag"
             parent="menu_configuration"
             sequence="10"/>
+
+        <menuitem
+            id="menu_cancel_appointment"
+            name="Annulation des rendez-vous"
+            parent="menu_master_appointment"
+            action="action_cancel_appointment"
+            sequence="20"/>
 
     </data> 
 </odoo>
