@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="confirm_user_id"/>
+                <!-- <field name="project_id" options="{'no_create': True}" attrs="{'invisible': [('visible_project', '=', False)]}"/> -->
+            </xpath>
+        </field>
+    </record>
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="odoo_inheritance.action_window">
+      <field name="name">odoo_inheritance window</field>
+      <field name="res_model">odoo_inheritance.odoo_inheritance</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="odoo_inheritance.action_server">
+      <field name="name">odoo_inheritance server</field>
+      <field name="model_id" ref="model_odoo_inheritance_odoo_inheritance"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="odoo_inheritance" id="odoo_inheritance.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="odoo_inheritance.menu_1" parent="odoo_inheritance.menu_root"/>
+    <menuitem name="Menu 2" id="odoo_inheritance.menu_2" parent="odoo_inheritance.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="odoo_inheritance.menu_1_list" parent="odoo_inheritance.menu_1"
+              action="odoo_inheritance.action_window"/>
+    <menuitem name="Server to list" id="odoo_inheritance" parent="odoo_inheritance.menu_2"
+              action="odoo_inheritance.action_server"/>
+-->
+  </data>
+</odoo>
