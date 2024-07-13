@@ -20,7 +20,8 @@ class HospitalPatient(models.Model):
     
     @api.model
     def create(self,vals):
-        super(HospitalPatient,self).create(vals)
+        vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
+        return super(HospitalPatient,self).create(vals)
 
     @api.depends('date_of_birth')
     def _compute_age(self):
