@@ -17,6 +17,10 @@ class HospitalPatient(models.Model):
     appointment_id = fields.Many2one('hospital.appointment', string="Rdv")
     image = fields.Image(string="Image")
     tag_ids = fields.Many2many('patient.tag',string="Tags")
+    
+    @api.model
+    def create(self,vals):
+        super(HospitalPatient,self).create(vals)
 
     @api.depends('date_of_birth')
     def _compute_age(self):
