@@ -22,6 +22,11 @@ class HospitalPatient(models.Model):
     def create(self,vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
         return super(HospitalPatient,self).create(vals)
+    
+    def write(self,vals):
+        if not self.ref and vals.get('ref'):
+            vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
+        return super(HospitalPatient,self).write(vals)
 
     @api.depends('date_of_birth')
     def _compute_age(self):
