@@ -13,6 +13,7 @@ class HospitalAppointment(models.Model):
     appointment_time = fields.Datetime(string="Heure du rdv", default=fields.Datetime.now)
     booking_date = fields.Date(string="Heure de réservation", default=fields.Date.context_today)
     ref = fields.Char(string="Code", help="Identifiant unique de chaque patient", tracking=True)
+    ref2 = fields.Char(string="Référence du rdv", help="Identifiant unique de chaque rdv", tracking=True)
     prescription = fields.Html(string="Prescription")
     active = fields.Boolean(string= "Active", default=True)
     priority = fields.Selection([
@@ -29,6 +30,15 @@ class HospitalAppointment(models.Model):
     pharmacy_line_ids = fields.One2many('appointment.pharmacy.lines', 'appointment_id', string="Lignes de pharmacy")
     hide_sales_price = fields.Boolean(string="Masquer le pdv")
 
+    @api.model
+    def create(self,vals):
+        vals['ref2'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+        return super(HospitalAppointment,self).create(vals)
+    
+    def write(self,vals):
+        if not self.ref and vals.get('ref'):
+            vals['ref2'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+        return super(HospitalAppointment,self).write(vals)
 
     @api.onchange('patient_id')
     def onchange_patient_id(self):
