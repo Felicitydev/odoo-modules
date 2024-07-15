@@ -1,5 +1,7 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 import datetime
+from odoo.exceptions import ValidationError
+
 
 class CancelAppointmentWizard(models.TransientModel):
     _name = 'cancel.appointment.wizard'
@@ -18,6 +20,8 @@ class CancelAppointmentWizard(models.TransientModel):
     reason = fields.Text(string="Raison de l'annulation")
     date_cancel = fields.Date(string="Date de l'annulation")
     
-    def action_cancel(self):
-        return 
+    def action_cancel(self):        
+        if self.appointment_id.booking_date == fields.Date.today():
+            raise ValidationError(_("Désolé,il n'est pas possible d'annuler à la meme date que la date de réservation"))
+        return
     
