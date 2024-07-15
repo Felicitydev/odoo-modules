@@ -63,11 +63,17 @@
             sequence="20"/>
 
         <menuitem
-            id="menu_playground"
-            name="Playground"
+            id="menu_technical"
+            name="Technique"
             parent="menu_hospital_root"
-            action="action_playground"
-            sequence="110"/>
+            sequence="110">
+                <menuitem
+                    id="menu_playground"
+                    name="Play ground"
+                    action="action_playground"
+                    sequence="10"/>
+        </menuitem> 
+
 
     </data> 
 </odoo>
