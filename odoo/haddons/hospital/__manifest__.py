@@ -17,6 +17,7 @@
         'views/female_patient.xml',
         'views/appointment.xml',
         'views/patient_tag.xml',
+        'views/odoo_playground.xml',
         'views/menu.xml',
 
     ],

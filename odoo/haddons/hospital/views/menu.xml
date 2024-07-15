@@ -62,5 +62,12 @@
             action="action_cancel_appointment"
             sequence="20"/>
 
+        <menuitem
+            id="menu_playground"
+            name="Playground"
+            parent="menu_hospital_root"
+            action="action_playground"
+            sequence="110"/>
+
     </data> 
 </odoo>
