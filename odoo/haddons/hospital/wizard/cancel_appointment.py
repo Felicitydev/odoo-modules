@@ -23,5 +23,6 @@ class CancelAppointmentWizard(models.TransientModel):
     def action_cancel(self):        
         if self.appointment_id.booking_date == fields.Date.today():
             raise ValidationError(_("Désolé,il n'est pas possible d'annuler à la meme date que la date de réservation"))
+        self.appointment_id.state = 'cancel'
         return
     
