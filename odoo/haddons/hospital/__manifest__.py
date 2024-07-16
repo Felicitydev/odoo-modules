@@ -18,6 +18,7 @@
         'views/appointment.xml',
         'views/patient_tag.xml',
         'views/odoo_playground.xml',
+        'views/res_config_settings.xml',
         'views/menu.xml',
 
     ],

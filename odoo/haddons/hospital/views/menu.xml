@@ -74,6 +74,13 @@
                     sequence="10"/>
         </menuitem> 
 
+        <menuitem
+            id="hospital_config_settings_menu"
+            name="Paramètres"
+            parent="hospital.menu_configuration"
+            action="action_config_settings_action"
+            groups="base.group_system"
+            sequence="0"/>
 
     </data> 
 </odoo>
