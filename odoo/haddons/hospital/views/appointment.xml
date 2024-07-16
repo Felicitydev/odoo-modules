@@ -113,7 +113,10 @@
                            widget="badge"/>
                     <button name="action_done" type="object" class="fa fa-check btn-success" attrs="{'invisible': [('state', '!=', 'in_consultation')]}"/>
                     <button name="action_cancel" type="object" class="fa fa-times btn-danger" context="{'hide_appointment': 1}" attrs="{'invisible': [('state', 'not in', ('draft','in_consultation'))]}"/> 
-
+                    <groupby name="patient_id"> 
+                        <button name="action_test" type="object" string= "Click me" class="oe_highlight" />
+                        <button name="edit" type="edit" string= "Modifier" />
+                    </groupby>
                 </tree>
             </field>
         </record>
