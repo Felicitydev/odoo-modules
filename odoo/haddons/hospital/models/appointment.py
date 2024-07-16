@@ -39,6 +39,12 @@ class HospitalAppointment(models.Model):
         if not self.ref and vals.get('ref'):
             vals['ref2'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
         return super(HospitalAppointment,self).write(vals)
+    
+    def unlink(self):
+        if self.state != 'draft':
+            raise ValidationError(_("Vous ne pouvez pas supprimer un rendez-vous à l'état est différent de brouilon."))
+        return super(HospitalAppointment,self).unlink()
+        
 
     @api.onchange('patient_id')
     def onchange_patient_id(self):
