@@ -14,6 +14,7 @@
                                 <field name="ref" readonly="1"/>
                             </h4>
                             <h2>
+                                <label for= "name" string="Nom" class="oe_edit_only"/>
                                 <field name="name"/>
                             </h2>
                         </div>
