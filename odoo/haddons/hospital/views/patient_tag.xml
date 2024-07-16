@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
+                    <field name="sequence"/>
                     <field name="color" widget="color_picker"/>
                     <field name="active"/>
                 </tree>
@@ -23,6 +24,7 @@
                         <group>
                             <group>
                                 <field name="name"/>
+                                <field name="sequence"/>
                             </group>
                             <group>
                                 <field name="color" widget="color_picker"/>
