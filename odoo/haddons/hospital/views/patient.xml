@@ -27,8 +27,8 @@
 
                         <group name="orther_info" string="Autres informations">
                             <field name="parent" attrs="{'invisible': [('age', '>', 35)]}"/>
-                            <field name="marital_status"/>
-                            <field name="partner_name"/>
+                            <field name="marital_status" attrs="{'invisible' : [('age', '&lt;=', 18)]}"/>
+                            <field name="partner_name" attrs="{'readonly' : [('marital_status', '!=', 'married')]}"/>
                         </group>
                     </sheet>
                     <!-- Chatter -->
