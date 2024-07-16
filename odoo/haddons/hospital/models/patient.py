@@ -18,6 +18,12 @@ class HospitalPatient(models.Model):
     image = fields.Image(string="Image")
     tag_ids = fields.Many2many('patient.tag',string="Tags")
     
+    @api.constrains('date_of_birth')
+    def _check_date_of_birth(self):
+        for rec in self:
+            if rec.date_of_birth and rec.date_of_birth > fields.Date.today():
+                raise ValidationError(_("La date de naissance ne peut pas etre supérieure à la date du jour"))
+    
     @api.model
     def create(self,vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
