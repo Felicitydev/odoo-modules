@@ -19,6 +19,12 @@ class HospitalPatient(models.Model):
     tag_ids = fields.Many2many('patient.tag',string="Tags")
     appointment_count = fields.Integer(string="Nombre de rdv", compute='compute_appointment_count', store=True)
     appointment_ids = fields.One2many('hospital.appointment', 'patient_id', string="Rendez-vous")
+    parent = fields.Char(string="Parent")
+    marital_status = fields.Selection([
+        ('married' , 'Marié(e)'),
+        ('single', 'Célibataire'), 
+        ], string="Statut matrimonial", tracking=True)
+    partner_name = fields.Char(string="Nom du partenaire")
     
     @api.constrains('date_of_birth')
     def _check_date_of_birth(self):
