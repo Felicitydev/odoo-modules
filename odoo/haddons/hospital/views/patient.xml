@@ -9,16 +9,22 @@
                 <form>
                     <sheet>
                         <field name="image" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h4>
+                                <field name="ref" readonly="1"/>
+                            </h4>
+                            <h2>
+                                <field name="name"/>
+                            </h2>
+                        </div>
                         <group>
                             <group>
-                                <field name="name"/>
                                 <field name="date_of_birth"/>
                                 <field name="age"/>
                                 <field name="appointment_count"/>
                                 <field name="appointment_id"/>
                             </group>
                             <group>
-                                <field name="ref"/>
                                 <field name="gender" invisible="context.get('hide_gender')"/>
                                 <field name="tag_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
                                 <field name="active" invisible ="1"/>
@@ -28,7 +34,8 @@
                         <group name="orther_info" string="Autres informations">
                             <field name="parent" attrs="{'invisible': [('age', '>', 35)]}"/>
                             <field name="marital_status" attrs="{'invisible' : [('age', '&lt;=', 18)]}"/>
-                            <field name="partner_name" attrs="{'readonly' : [('marital_status', '!=', 'married')]}"/>
+                            <field name="partner_name" attrs="{'readonly' : [('marital_status', '!=', 'married')], 
+                                                            'required' : [('marital_status', '=', 'married')]}"/>
                         </group>
                     </sheet>
                     <!-- Chatter -->
