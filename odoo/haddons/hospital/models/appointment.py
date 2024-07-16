@@ -8,7 +8,7 @@ class HospitalAppointment(models.Model):
     _description = 'Hospital Appointment'
     _rec_name = 'patient_id'
 
-    patient_id = fields.Many2one(comodel_name='hospital.patient', string="Patients")
+    patient_id = fields.Many2one(comodel_name='hospital.patient', string="Patients", ondelete='cascade') # if ondelete=cascade, delete the patient will delete all the appointment of the patient and if it's =restrict, we can't delete the appointment without deleting the patient
     gender = fields.Selection(related="patient_id.gender", readonly=False)
     appointment_time = fields.Datetime(string="Heure du rdv", default=fields.Datetime.now)
     booking_date = fields.Date(string="Heure de réservation", default=fields.Date.context_today)
