@@ -12,7 +12,7 @@ class HospitalPatient(models.Model):
     name = fields.Char(string="Nom", tracking=True)
     date_of_birth = fields.Date(string="Date de naissance")
     ref = fields.Char(string="Code", tracking=True)
-    age = fields.Integer(string="Age", compute = '_compute_age', inverse='_inverse_compute_age', tracking=True, store = True)
+    age = fields.Integer(string="Age", compute = '_compute_age', inverse='_inverse_compute_age', tracking=True, search = '_search_age')
     gender = fields.Selection([('mal', 'Masculin'), ('female', 'Féminin')], string="Genre", tracking=True)
     active=fields.Boolean(string="Atif", default=True)
     appointment_id = fields.Many2one('hospital.appointment', string="Rdv")
@@ -64,6 +64,12 @@ class HospitalPatient(models.Model):
        for rec in self:
             today = date.today()
             rec.date_of_birth = today - relativedelta.relativedelta(years=rec.age)
+            
+    def _search_age(self, operator, value):
+        date_of_birth = date.today() - relativedelta.relativedelta(years=value)
+        start_of_year = date_of_birth.replace(day=1, month=1)
+        end_of_year = date_of_birth.replace(day=31, month=12)
+        return [('date_of_birth', '>=', start_of_year), ('date_of_birth', '<=', end_of_year)]
     
     @api.depends('appointment_ids')            
     def compute_appointment_count(self):
