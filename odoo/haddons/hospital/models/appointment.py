@@ -41,9 +41,10 @@ class HospitalAppointment(models.Model):
         return super(HospitalAppointment,self).write(vals)
     
     def unlink(self):
-        if self.state != 'draft':
-            raise ValidationError(_("Vous ne pouvez pas supprimer un rendez-vous à l'état est différent de brouilon."))
-        return super(HospitalAppointment,self).unlink()
+        for rec in self:
+            if rec.state != 'draft':
+                raise ValidationError(_("Vous ne pouvez pas supprimer un rendez-vous à l'état est différent de brouilon."))
+            return super(HospitalAppointment,self).unlink()
         
 
     @api.onchange('patient_id')
