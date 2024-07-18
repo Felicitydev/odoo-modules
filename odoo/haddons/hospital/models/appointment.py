@@ -29,6 +29,7 @@ class HospitalAppointment(models.Model):
     doctor_id = fields.Many2one('res.users', string = "Docteur", tracking=True)
     pharmacy_line_ids = fields.One2many('appointment.pharmacy.lines', 'appointment_id', string="Lignes de pharmacy")
     hide_sales_price = fields.Boolean(string="Masquer le pdv")
+    operation = fields.Many2one('hospital.operation', string="Opérations")
 
     @api.model
     def create(self,vals):

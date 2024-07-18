@@ -51,6 +51,7 @@
                                 <field name="appointment_time"/>
                                 <field name="hide_sales_price" groups="base.group_no_one"/>
                                 <field name="booking_date" help="dete de réservation" default_focus="1"/> <!--default_focus="1" using when opening the form it's the field by default  -->
+                                <field name="operation"/>
                                 <button name="action_test" string="object button" type="object" class="oe_highlight" confirm="Etes-vous sur de vouloir ouvrir le code python?"/>
                                 <button name="%(hospital.action_hospital_patient)d" string="action button" type="action" confirm="Etes-vous sur de vouloir ouvrir la vue des patients?" class="oe_highlight" help="En cliquant ici vous serez redirigez vers la vue des patients"/>
                             </group>

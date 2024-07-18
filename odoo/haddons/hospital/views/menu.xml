@@ -82,5 +82,12 @@
             groups="base.group_system"
             sequence="0"/>
 
+        <menuitem
+            id="menu_patient_operation"
+            name="Opérations"
+            action="action_patient_operation"
+            parent="menu_configuration"
+            sequence="20"/>
+
     </data> 
 </odoo>
