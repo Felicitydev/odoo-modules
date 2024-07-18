@@ -56,8 +56,9 @@
                 <tree export_xlsx="0">
                     <field name="name" string="Nom patient"/>
                     <field name="ref"/>
-                    <field name="age"/>
-                    <field name="gender"/>
+                    <field name="age" avg="Moyenne d'age"/>
+                    <field name="appointment_count" sum="Total rdv"/>
+                     <field name="gender"/>
                     <field name="tag_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
 
 
