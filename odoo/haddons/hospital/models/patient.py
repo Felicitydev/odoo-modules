@@ -26,6 +26,7 @@ class HospitalPatient(models.Model):
         ('single', 'Célibataire'), 
         ], string="Statut matrimonial", tracking=True)
     partner_name = fields.Char(string="Nom du partenaire")
+    is_birthday = fields.Boolean(string="Anniversaire", compute='_compute_is_birthday')
     
     @api.constrains('date_of_birth')
     def _check_date_of_birth(self):
@@ -78,3 +79,13 @@ class HospitalPatient(models.Model):
             
     def action_test(self):
         return 
+    
+    @api.depends('date_of_birth')            
+    def _compute_is_birthday(self):
+        for rec in self:
+            is_birthday = False
+            if rec.date_of_birth:
+                today = date.today()
+                if today.day == rec.date_of_birth.day and today.month == rec.date_of_birth.month:
+                    is_birthday = True
+            rec.is_birthday = is_birthday
