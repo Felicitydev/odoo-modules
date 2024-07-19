@@ -28,5 +28,8 @@ class CancelAppointmentWizard(models.TransientModel):
         if allowed_date <  date.today():
             raise ValidationError(_("Désolé, vous ne pouvez pas annuler un rendez-vous dont la date n'est pas encore arrivée."))
         self.appointment_id.state = 'cancel'
-        return
+        return {
+            'type' : 'ir.actions.client',
+            'tag' : 'reload',
+        }
     
