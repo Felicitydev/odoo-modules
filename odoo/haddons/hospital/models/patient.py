@@ -27,6 +27,9 @@ class HospitalPatient(models.Model):
         ], string="Statut matrimonial", tracking=True)
     partner_name = fields.Char(string="Nom du partenaire")
     is_birthday = fields.Boolean(string="Anniversaire", compute='_compute_is_birthday')
+    phone =fields.Char(string="Téléphone")
+    email =fields.Char(string="Email")
+    website =fields.Char(string="Website")
     
     @api.constrains('date_of_birth')
     def _check_date_of_birth(self):
