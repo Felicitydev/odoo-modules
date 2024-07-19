@@ -9,6 +9,7 @@
                 <tree>
                     <field name="doctor_id"/>
                     <field name="operation_name"/>
+                    <field name="refernce_record"/>
                 </tree>
             </field>
         </record>
@@ -23,6 +24,7 @@
                             <group>
                                 <field name="doctor_id"/>
                                 <field name="operation_name"/>
+                                <field name="refernce_record"/>
                             </group>
                         </group>
                     </sheet>
