@@ -76,6 +76,8 @@
                             </group>
                             <group>
                                 <field name="appointment_time"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                                <field name="currency_id" groups="base.group_multi_currency"/>
                                 <field name="hide_sales_price" groups="base.group_no_one"/>
                                 <field name="booking_date" help="dete de réservation" default_focus="1"/> <!--default_focus="1" using when opening the form it's the field by default  -->
                                 <field name="duration"/>
@@ -96,8 +98,10 @@
                                 <field name="pharmacy_line_ids">
                                     <tree editable="bottom">
                                         <field name="product_id"/>
-                                        <field name="price" attrs="{'column_invisible': [('parent.hide_sales_price','=', True)]}"/>
+                                        <field name="price" attrs="{'column_invisible': [('parent.hide_sales_price','=', True)]}" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
                                         <field name="qty"/>
+                                        <field name="company_currency_id" invisible="1"/>
+                                        <field name="price_subtotal"/>
                                     </tree>
                                     <form>
                                         <group>

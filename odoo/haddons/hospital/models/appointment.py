@@ -33,6 +33,9 @@ class HospitalAppointment(models.Model):
     operation = fields.Many2one('hospital.operation', string="Opérations")
     progress = fields.Integer(string="Progrès", compute='_compute_progress')
     duration = fields.Float(string="Duréé")
+    company_id = fields.Many2one('res.company', string="Société", default=lambda self: self.env.company)
+    currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
+    
 
     @api.model
     def create(self,vals):
