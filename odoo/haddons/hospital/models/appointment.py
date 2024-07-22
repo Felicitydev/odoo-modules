@@ -32,6 +32,7 @@ class HospitalAppointment(models.Model):
     hide_sales_price = fields.Boolean(string="Masquer le pdv")
     operation = fields.Many2one('hospital.operation', string="Opérations")
     progress = fields.Integer(string="Progrès", compute='_compute_progress')
+    duration = fields.Float(string="Duréé")
 
     @api.model
     def create(self,vals):
