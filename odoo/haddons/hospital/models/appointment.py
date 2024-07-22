@@ -1,6 +1,6 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
-
+import random
 
 class HospitalAppointment(models.Model):
     _name = 'hospital.appointment'
@@ -31,6 +31,7 @@ class HospitalAppointment(models.Model):
     pharmacy_line_ids = fields.One2many('appointment.pharmacy.lines', 'appointment_id', string="Lignes de pharmacy")
     hide_sales_price = fields.Boolean(string="Masquer le pdv")
     operation = fields.Many2one('hospital.operation', string="Opérations")
+    progress = fields.Integer(string="Progrès", compute='_compute_progress')
 
     @api.model
     def create(self,vals):
@@ -80,3 +81,16 @@ class HospitalAppointment(models.Model):
     def action_draft(self):
         for rec in self:
             rec.state ='draft'
+            
+    @api.depends('state')
+    def _compute_progress(self):
+        for rec in self:
+            if rec.state == 'draft':
+                progress = random.randrange(0,25)
+            elif rec.state == 'in_consultation':
+                progress = 75
+            elif rec.state == 'done':
+                progress = 100
+            else:
+                progress = 0
+            rec.progress = progress

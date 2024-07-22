@@ -71,6 +71,10 @@
                             </group>
                         </group>
                         <notebook>
+                            <page string = "Progès" name="progress">
+                                <field name="progress" widget="gauge" options="{'style': 'width:160px; height: 120px;'}"/>
+                                <!-- <field name="progress" widget="percentpie"/> Or use -->
+                            </page>
                             <page string = "Prescription" name="prescription">
                                 <field name="prescription" placeholder = "Entrez votre prescription" options="{'collaborative' : true, 'resizable': true, 'codeview':true}"/>
                             </page>
@@ -132,6 +136,8 @@
                         <button name="action_test" type="object" string= "Click me" class="oe_highlight" />
                         <button name="edit" type="edit" string= "Modifier" />
                     </groupby>
+                    <field name="progress" widget= "progressbar"/>
+
                 </tree>
             </field>
         </record>
