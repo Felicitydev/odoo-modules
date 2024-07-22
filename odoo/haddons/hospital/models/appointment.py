@@ -9,12 +9,12 @@ class HospitalAppointment(models.Model):
     _rec_name = 'patient_id'
     _order = 'id desc'
 
-    patient_id = fields.Many2one(comodel_name='hospital.patient', string="Patients", ondelete='cascade') # if ondelete=cascade, delete the patient will delete all the appointment of the patient and if it's =restrict, we can't delete the appointment without deleting the patient
+    patient_id = fields.Many2one(comodel_name='hospital.patient', string="Patients", ondelete='cascade', tracking=1) # if ondelete=cascade, delete the patient will delete all the appointment of the patient and if it's =restrict, we can't delete the appointment without deleting the patient
     gender = fields.Selection(related="patient_id.gender", readonly=False)
     appointment_time = fields.Datetime(string="Heure du rdv", default=fields.Datetime.now)
-    booking_date = fields.Date(string="Heure de réservation", default=fields.Date.context_today)
-    ref = fields.Char(string="Code", help="Identifiant unique de chaque patient", tracking=True)
-    ref2 = fields.Char(string="Référence du rdv", help="Identifiant unique de chaque rdv", tracking=True)
+    booking_date = fields.Date(string="Heure de réservation", default=fields.Date.context_today, tracking=4)
+    ref = fields.Char(string="Code", help="Identifiant unique de chaque patient")
+    ref2 = fields.Char(string="Référence du rdv", help="Identifiant unique de chaque rdv")
     prescription = fields.Html(string="Prescription")
     active = fields.Boolean(string= "Active", default=True)
     priority = fields.Selection([
@@ -26,13 +26,13 @@ class HospitalAppointment(models.Model):
         ('draft', 'Brouillon'),
         ('in_consultation', 'Consultation'),
         ('done', 'Fait'),
-        ('cancel', 'Annulé')], default='draft', string="Statut", required=True)
-    doctor_id = fields.Many2one('res.users', string = "Docteur", tracking=True)
+        ('cancel', 'Annulé')], default='draft', string="Statut", required=True, tracking=3)
+    doctor_id = fields.Many2one('res.users', string = "Docteur", tracking=2)
     pharmacy_line_ids = fields.One2many('appointment.pharmacy.lines', 'appointment_id', string="Lignes de pharmacy")
     hide_sales_price = fields.Boolean(string="Masquer le pdv")
     operation = fields.Many2one('hospital.operation', string="Opérations")
     progress = fields.Integer(string="Progrès", compute='_compute_progress')
-    duration = fields.Float(string="Duréé")
+    duration = fields.Float(string="Dureé", tracking=5)
     company_id = fields.Many2one('res.company', string="Société", default=lambda self: self.env.company)
     currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
     
