@@ -77,9 +77,16 @@ class HospitalPatient(models.Model):
     
     @api.depends('appointment_ids')            
     def compute_appointment_count(self):
-        for rec in self:
-            rec.appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=', rec.id)])
-            
+        appointment_group = self.env['hospital.appointment'].read_group(domain=[('state', '=', 'done')], fields=['patient_id'], groupby=['patient_id'])
+        for appointment in appointment_group:
+            patient_id = appointment.get('patient_id')[0]
+            if patient_id:
+                patient_rec = self.browse(patient_id)
+                patient_rec.appointment_count = appointment['patient_id_count']
+                # S'il existe des patients n'ayant pas de rdv le système va renvoyer une erreur du style valueerror compute method failed to assign hospital.patient(id_patient,).appointment_count, pour cela on saisit les deux lignes suivantes | the system it's not able able to assign values for record 
+                self -= patient_rec
+        self.appointment_count = 0
+
     def action_test(self):
         return 
     
