@@ -7,9 +7,9 @@
             <field name="model">hospital.operation</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="sequence" widget="handle"/>
                     <field name="doctor_id"/>
                     <field name="operation_name"/>
-                    <field name="refernce_record"/>
                 </tree>
             </field>
         </record>
